@@ -1,0 +1,12 @@
+class Solution(object):
+    def permute(self, nums):
+        result = []
+        def backtrack(target, options):
+            if len(options)==0:
+                result.append(target)
+                return
+            for i in range(len(options)):
+                backtrack(target + [options[i]], options[:i] + options[i+1:])
+        backtrack([], nums)
+        return result
+        
