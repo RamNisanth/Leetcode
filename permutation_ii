@@ -1,0 +1,16 @@
+class Solution:
+    def permuteUnique(self, nums):
+        result = []
+        def backtracking(target, nums):
+            dst_int = set()
+            if len(nums)==0:
+                result.append(target)
+                return
+            for i in range(len(nums)):
+                if nums[i] not in dst_int:
+                    backtracking(target + [nums[i]], nums[:i]+nums[i+1:])
+                    dst_int.add(nums[i])
+                else:
+                    pass
+        backtracking([], nums)
+        return result     
