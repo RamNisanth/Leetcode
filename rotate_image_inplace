@@ -1,0 +1,15 @@
+class Solution:
+    def rotate(self, matrix):
+        n = len(matrix)-1
+        index = set()
+        for i in range(n+1):
+            for j in range(n+1):
+                if (i,j) not in index:
+                    temp = matrix[i][j]
+                    matrix[i][j] = matrix[n-j][i]
+                    matrix[n-j][i] = matrix[n-i][n-j]
+                    matrix[n-i][n-j] = matrix[j][n-i]
+                    matrix[j][n-i] = temp
+                    index.update([(i,j),(n-j,i),(n-i,n-j),(j,n-i)])
+                    if len(index) == n*n or len(index) == n*n-1:
+                        break
