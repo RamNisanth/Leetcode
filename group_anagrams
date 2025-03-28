@@ -1,0 +1,16 @@
+class Solution:
+    def groupAnagrams(self, strs):
+        res=[]
+        pattern_dict = dict()
+        for i in range(len(strs)):
+            word = strs[i]
+            word = "".join(sorted(word))
+            if word not in pattern_dict:
+                pattern_dict[word] = [strs[i]]
+            else:
+                pattern_dict[word].append(strs[i])
+        
+        for _, patterns in pattern_dict.items():
+            res.append(patterns)
+
+        return res
