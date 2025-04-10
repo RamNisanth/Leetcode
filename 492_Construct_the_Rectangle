@@ -1,0 +1,7 @@
+class Solution:
+    def constructRectangle(self, area):
+        main = 1
+        for i in range(int(math.sqrt(area)), 0, -1):
+            if area%i == 0:
+                main = max(main, i)
+        return [area//main, main]
