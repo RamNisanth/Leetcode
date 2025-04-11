@@ -1,0 +1,15 @@
+class Solution:
+    def spiralOrder(self, matrix):
+        def rotate_anticlockwise(matrix):
+            transposed = [list(row) for row in zip(*matrix)]
+            rotated = transposed[::-1]
+            return rotated
+        result = []
+        while len(matrix)>0:
+            for i in matrix[0]:
+                result.append(i)
+                print(i)
+            matrix.pop(0)
+            matrix = rotate_anticlockwise(matrix)
+        return result
+
