@@ -1,0 +1,11 @@
+class Solution:
+    def restoreString(self, s, indices):
+        wordict = {}
+        j=0
+        for i in indices:
+            wordict[i]=s[j]
+            j+=1
+        S=""
+        for i in range(len(s)):
+            S+=wordict[i]
+        return S
