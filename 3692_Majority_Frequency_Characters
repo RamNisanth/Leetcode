@@ -1,0 +1,31 @@
+class Solution:
+    def majorityFrequencyGroup(self, s):
+        wordict={}
+        for i in s:
+            if i not in wordict:
+                wordict[i]=1
+            else:
+                wordict[i]+=1
+        freqdict={}
+        for i in wordict:
+            if wordict[i] not in freqdict:
+                freqdict[wordict[i]] = {i,}
+            else:
+                freqdict[wordict[i]].add(i)
+
+        maxset_key = next(iter(freqdict))
+        for i in freqdict:
+            if len(freqdict[i])>len(freqdict[maxset_key]):
+                maxset_key=i
+            elif len(freqdict[i])==len(freqdict[maxset_key]):
+                if i>maxset_key:
+                    maxset_key=i
+        word_set = freqdict[maxset_key]
+        S =""
+        for i in word_set:
+            S+=i
+        return S
+
+        
+
+        
