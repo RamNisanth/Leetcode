@@ -1,0 +1,18 @@
+class Solution:
+    def merge(self, intervals):
+        intervals.sort() # remove the disorder -- helps to iterate through the list -- considers the 0th element in each sub-list
+        inter=[]
+        L=intervals[0][0]
+        R=intervals[0][1]
+        for i in range(len(intervals)):
+            if R>=intervals[i][1]:
+                continue
+            if R>=intervals[i][0]:
+                R=intervals[i][1]
+                continue
+            else:
+                inter.append([L,R])
+                L=intervals[i][0]
+                R=intervals[i][1]
+        inter.append([L,R])
+        return inter
