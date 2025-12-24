@@ -1,0 +1,22 @@
+class Solution:
+    def numPrimeArrangements(self, n):
+        def factorial(n):
+            if n == 0:
+                return 1
+            else:
+                return n*factorial(n-1)
+        #finding the prime numbers between 1 and n
+        P = 0
+        if n < 2:
+            P=0
+        else:
+            is_prime = [True] * (n + 1)
+            is_prime[0] = is_prime[1] = False
+
+            for i in range(2, int(n**0.5) + 1):
+                if is_prime[i]:
+                    for j in range(i * i, n + 1, i):
+                        is_prime[j] = False
+            P= sum(is_prime)
+        return factorial(n-P)*factorial(P)%(1000000007)
+
